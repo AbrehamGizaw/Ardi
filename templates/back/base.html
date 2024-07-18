@@ -1,0 +1,219 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+  <title>{% block main_title %} Ardi Marble {% endblock %}</title>
+
+  <head>
+    {% include 'back/head.html' %}
+    {% block style %}
+    {% endblock %}
+  </head>
+<!-- BEGIN: Body-->
+
+  <body id="id_bar" class="vertical-layout vertical-menu-modern 2-columns   fixed-navbar " data-open="click"
+    data-menu="vertical-menu-modern" data-col="2-columns">
+
+    {% include 'back/header.html' %}
+
+    <!-- BEGIN: Main Menu-->
+    <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow expan" data-scroll-to-active="true">
+      <div class="main-menu-content" style="margin-bottom: 40px; ">
+
+        <ul class="navigation navigation-main " id="main-menu-navigation" data-menu="menu-navigation"
+          style=" padding-bottom: 110px;">
+
+          <li class=" nav-item navigation-header {% block dashboard %} {% endblock %}">
+            <a href="{% url 'index' %}"><i class="fa fa-home"></i><span class="menu-title">View Site</span></a>
+          </li>
+
+          <br>
+
+          <li class=" nav-item {% block index %} {% endblock %}">
+            <a href="{% url 'dashboard' %}">
+              <span class="menu-title">Dashboard </span>
+            </a>
+
+          </li>
+
+          <li class=" nav-item ">
+            <a href="#">
+              <span class="menu-title"><i class="fa fa-list"></i>Product</span>
+            </a>
+            <ul class="menu-content">
+              <li class=" nav-item"><a href=" {% url 'add_product' %}" class="menu-item"><span class="menu-title">Add
+                    Products</span></a>
+              </li>
+
+              <li class=" nav-item"><a href="{% url 'list_product' %}" class="menu-item"><span class="menu-title">List
+                    Products</span></a>
+              </li>
+
+              <li class=" nav-item"><a href=" " target="blank" class="menu-item">
+                  <span class="menu-title"> Products on Site </span></a>
+              </li>
+            </ul>
+          </li>
+
+          <li class=" nav-item {% block gallery %} {% endblock %}">
+            <a href="#">
+              <span class="menu-title"><i class="fa fa-image"></i>Gallery</span>
+            </a>
+            <ul class="menu-content">
+              <li class=" nav-item"><a href=" {% url 'add_gallery' %}" class="menu-item"><span
+                    class="menu-title">Add Gallery</span></a>
+              </li>
+
+              <li class=" nav-item"><a href="{% url 'list_gallery' %}" class="menu-item"><span class="menu-title">List
+                    Gallery</span></a>
+              </li>
+
+              <li class=" nav-item"><a href="" target="blank" class="menu-item">
+                  <span class="menu-title"> Gallery on Site </span></a>
+              </li>
+            </ul>
+          </li>
+
+          <li class=" nav-item {% block testimonial %} {% endblock %}">
+            <a href="#">
+              <span class="menu-title"><i class="fa fa-file"></i>Testimonial</span>
+            </a>
+            <ul class="menu-content">
+              <li class=" nav-item"><a href="{% url 'add_testimonial' %}" class="menu-item"><span
+                    class="menu-title">Add Testimonial</span></a></li>
+
+              <li class=" nav-item"><a href="{% url 'list_testimonial' %}" class="menu-item"><span class="menu-title">List
+                    Testimonial</span></a></li>
+
+
+              <li class=" nav-item"><a href="" target="blank" class="menu-item">
+                  <span class="menu-title"> Testimonial on Site </span></a>
+              </li>
+            </ul>
+
+          </li>
+
+          <li class=" nav-item {% block contact %} {% endblock %}">
+            <a href="#">
+              <span class="menu-title"><i class="fa fa-envelope"></i>Messages</span>
+            </a>
+            <ul class="menu-content">
+
+              <li class=" nav-item"><a href="{% url 'list_contact' %}" class="menu-item"><span class="menu-title">List
+                    messages</span></a></li>
+
+
+              <li class=" nav-item"><a href="{% url 'add_contact' %}" target="blank" class="menu-item">
+                  <span class="menu-title"> Contact on Site </span></a>
+              </li>
+            </ul>
+
+          </li>
+
+          <li class=" nav-item {% block staff %} {% endblock %}">
+            <a href="#">
+              <span class="menu-title"><i class="fa fa-home"></i>Staff</span>
+            </a>
+            <ul class="menu-content">
+
+              <li class=" nav-item"><a href="{% url 'useracc:staff_page' %}" class="menu-item"><span class="menu-title">List
+                    Registered staffs</span></a></li>
+
+
+              <li class=" nav-item"><a href="{% url 'useracc:register' %}" target="blank" class="menu-item">
+                  <span class="menu-title"> Register New Staff </span></a>
+              </li>
+            </ul>
+
+          </li>
+
+          <br>
+        </ul>
+      </div>
+    </div>
+   <!--  END: Main Menu -->
+
+        <!-- BEGIN: Content-->
+    <div class="app-content content" style="background: #fff;">
+      <div class="content-wrapper">
+
+        <!--start message area -->
+        <div id="id_messages_area" class="content-header row" style="width: 100%;">
+
+          {% if messages %}
+            {% for m in messages %}
+              {% if 'success' in m.tags %}
+              <div class="alert alert-icon-right alert-success alert-dismissible col-md-12" role="alert">
+              {% elif 'warning' in m.tags %}
+              <div class="alert alert-icon-right alert-warning alert-dismissible col-md-12" role="alert">
+              {% elif 'error' in m.tags %}
+              <div class="alert alert-icon-right alert-danger alert-dismissible col-md-12" role="alert">
+              {% else %}
+              <div class="alert alert-icon-right alert-info alert-dismissible col-md-12" role="alert">
+              {% endif %}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+                <strong></strong> {{m}} <a href="#" class="alert-link"></a>
+              </div>
+
+            {% endfor %}
+          {% endif %}
+        </div>
+                  <!-- end message area -->
+
+
+        <div class="content-header-left col-md-6 col-12 mb-2">
+          <h3 class="content-header-title mb-0">{% block title %}{% endblock %}</h3>
+          <div class="row breadcrumbs-top">
+            <div class="breadcrumb-wrapper col-12">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">dashboard</a></li>
+                {% block breadcrumb %} {% endblock %}
+              </ol>
+            </div>
+          </div>
+        </div>
+        <div class="content-body" style="box-shadow: 4px 4px 10px #888888; padding: 20px;">
+          {% block content %}
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+              <!-- END: Content-->
+
+          <!-- BEGIN: Footer-->
+    <footer class="footer footer-static footer-light navbar-border">
+      <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2"><span
+          class="float-md-left d-block d-md-inline-block"> &copy; 2024 <a
+            class="text-bold-800 text-center grey darken-2" href="#" target="_blank">Ardi</a></span><span
+          class="float-md-right d-none d-lg-block">Developed by DebolEngineering</span>
+      </p>
+    </footer>
+          <!-- END: Footer-->
+
+          <!-- BEGIN: Vendor JS-->
+    <script src="{% static 'staff/vendors/js/vendors.min.js' %}"></script>
+    <script src="{% static 'staff/vendors/js/tables/datatable/datatables.min.js' %}"></script>
+
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="{% static 'staff/js/scripts/tables/datatables/datatable-basic.min.js' %}"></script>
+    <!-- END: Page Vendor JS-->
+
+    <script src="{% static 'staff/js/core/app-menu.min.js' %}"></script>
+    <script src="{% static 'staff/js/core/app.min.js' %}"></script>
+        <!-- END: Theme JS-->
+
+        <!-- BEGIN: Theme JS-->
+        <!-- END: Page JS-->
+    {% block js %}
+    
+    {% endblock %}
+    <script src="{% static 'staff/js/scripts/compiled.min.js' %}"></script>
+
+
+
+
+  </body>
+<!-- END: Body-->
+
+</html>

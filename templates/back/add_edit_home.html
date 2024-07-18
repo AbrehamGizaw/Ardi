@@ -1,0 +1,106 @@
+{% extends 'back/base.html' %}
+{% load static %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="{% url 'list_home' %}">Homes</a></li>
+<li class="breadcrumb-item">
+    {% if home %}Edit Home{% else %}Add Home{% endif %}
+</li>
+{% endblock %}
+
+{% block content %}
+<div class="site-main">
+    <section class="ttm-row clearfix">
+        <div class="container">
+            <div class="row pt-60 res-991-pt-0">
+                <div class="col-lg-12">
+                    <div class="pr-40 res-991-pr-0 res-991-pb-30">
+                        <h4 class="h4-md">
+                            {% if home %}Edit Home{% else %}Add Home{% endif %}
+                        </h4>
+
+                        <form action="{% if home %}{% url 'edit_home' id=home.id %}{% else %}{% url 'add_home' %}{% endif %}" method="POST" enctype="multipart/form-data" class="row">
+                            {% csrf_token %}
+                            <div class="col-md-6">
+                                <div class="contact-form col-md-12 pb-2 input-patient">
+                                    <p style="font-weight: 700;">Title</p>
+                                    {{ form.title }}
+                                    {{ form.errors.title }}
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="contact-form col-md-12 pb-2 input-patient">
+                                    <p style="font-weight: 700;">Address</p>
+                                    {{ form.address }}
+                                    {{ form.errors.address }}
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="contact-form col-md-12 pb-2 input-patient">
+                                    <p style="font-weight: 700;">Description</p>
+                                    {{ form.description }}
+                                    {{ form.errors.description }}
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="contact-form col-md-12 pb-2 input-patient">
+                                    <p style="font-weight: 700;">Price</p>
+                                    {{ form.price }}
+                                    {{ form.errors.price }}
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="contact-form col-md-12 pb-2 input-patient">
+                                    <p style="font-weight: 700;">Images</p>
+                                    <input type="file" name="images" multiple>
+                                    {{ image_form.errors.image }}
+                                </div>
+                            </div>
+
+                            {% if home and home.images.all %}
+                            <div class="col-md-12">
+                                <h5>Existing Images</h5>
+                                <ul>
+                                    {% for image in home.images.all %}
+                                    <li>
+                                        <img src="{{ image.image.url }}" alt="{{ image.image.name }}" style="max-width: 100px; height: auto;">
+                                        <form action="{% url 'delete_home_image' id=image.id %}" method="POST" style="display: inline;">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        </form>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            {% endif %}
+
+                            <div class="col-md-12 mb-3">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+
+                        {% if form.errors %}
+                        <div class="alert alert-danger">
+                            <strong>Error!</strong> Please correct the following issues:
+                            <ul>
+                                {% for field, error_list in form.errors.items %}
+                                {% for error in error_list %}
+                                <li>{{ field }}: {{ error }}</li>
+                                {% endfor %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

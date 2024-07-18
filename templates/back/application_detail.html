@@ -1,0 +1,51 @@
+{% extends 'back/base.html' %}
+{% load static %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="{% url 'staff:applications' %}">Submissions</a></li>
+<li class="breadcrumb-item"><a href="">Submission detail</a></li>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title">Submission Detail</h1>
+            <div class="row">
+                <div class="col-md-12   pr-0">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Title:</strong> {{ application.title }}</li>
+                    </ul>
+                </div>
+                <div class="col-md-4   pr-0">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Name:</strong> {{ application.applicant_name }}</li>
+                        <li class="list-group-item"><strong>Concept Note:</strong><br> <a href="{{ application.concept_note.url }}" class="btn btn-success">Download concept doc</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4   pr-0">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Email:</strong> {{ application.email }}</li>
+                        <li class="list-group-item "><strong>CV Document:</strong> <br> <a href="{{ application.cv_document.url }}" class="btn btn-success">Download cv doc</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4   pr-0">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Phone:</strong> {{ application.phone }}</li>
+                      {% if application.supplementary_document %}  <li class="list-group-item "><strong>Supplementary Document:</strong> <br> <a href="{{ application.supplementary_document.url }}" class="btn btn-success">Download Supplementary doc </a></li> {% endif %}
+                    </ul>
+                </div>
+                <div class="col-md-4   pr-0">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item"><strong>Submitted Date:</strong> {{ application.submitted_date }}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-4 border border-primary p-3">
+                <h5 class="card-subtitle mb-2 text-muted">Description:</h5>
+                <p class="card-text">{{ application.description|safe }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

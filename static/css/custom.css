@@ -1,0 +1,40 @@
+/* Add custom styles here */
+.testimonial-image {
+    transition: transform 0.3s ease-out;
+    width: 160px;
+    height: auto;
+}
+
+.testimonial-image:hover {
+    transform: scale(1.2); /* Enlarge image on hover */
+}
+
+.client_text {
+    position: relative;
+}
+
+.testimonial-content {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limit to 2 lines */
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    white-space: normal;
+    line-height: 1.5em; /* Adjust line height as needed */
+    max-height: 3em; /* Adjust max height based on line-height */
+}
+
+.testimonial-content.expanded {
+    max-height: none; /* Remove max-height to show full content */
+    -webkit-line-clamp: unset;
+}
+
+.read-more {
+    color: #007bff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}

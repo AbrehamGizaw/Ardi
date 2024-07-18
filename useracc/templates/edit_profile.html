@@ -1,0 +1,68 @@
+{% extends 'back/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Edit Profile</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="col-md-6" style="margin-bottom: 10px; flex: 0 0 48%;">
+            <label for="{{ form.username.id_for_label }}">Username:</label>
+            {{ form.username }}
+            {% if form.username.errors %}
+            <div style="color: red;">{{ form.username.errors }}</div>
+            {% endif %}
+        </div>
+
+        <div class="col-md-6" style="margin-bottom: 10px; flex: 0 0 48%;">
+            <label for="{{ form.first_name.id_for_label }}">First Name:</label>
+            {{ form.firstname }}
+            {% if form.firstname.errors %}
+            <div style="color: red;">{{ form.firstname.errors }}</div>
+            {% endif %}
+        </div>
+
+        <div class="col-md-6 col-lg-5" style="margin-bottom: 10px; flex: 0 0 48%;">
+            <label for="{{ form.last_name.id_for_label }}">Last Name:</label>
+            {{ form.lastname }}
+            {% if form.lastname.errors %}
+            <div style="color: red;">{{ form.lastname.errors }}</div>
+            {% endif %}
+        </div>
+
+        <div class="col-md-6 col-lg-5" style="margin-bottom: 10px; flex: 0 0 48%;">
+            <label for="{{ form.gender.id_for_label }}">Gender:</label>
+            {{ form.gender }}
+            {% if form.gender.errors %}
+            <div style="color: red;">{{ form.gender.errors }}</div>
+            {% endif %}
+        </div>
+
+        <div class="col-md-6" style="margin-bottom: 10px; flex: 0 0 48%;">
+            <label for="{{ form.email.id_for_label }}">Email:</label>
+            {{ form.email }}
+            {% if form.email.errors %}
+            <div style="color: red;">{{ form.email.errors }}</div>
+            {% endif %}
+        </div>
+
+        <div class="col-md-6" style="margin-bottom: 10px; flex: 0 0 48%;">
+            <label for="{{ form.phone.id_for_label }}">Phone:</label>
+            {{ form.phone }}
+            {% if form.phone.errors %}
+            <div style="color: red;">{{ form.phone.errors }}</div>
+            {% endif %}
+        </div>
+
+        <div class="col-md-6" style="margin-bottom: 10px; flex: 0 0 100%;">
+            <label for="{{ form.profile.id_for_label }}">Profile Picture:</label>
+            {{ form.profile }}
+            {% if form.profile.errors %}
+            <div style="color: red;">{{ form.profile.errors }}</div>
+            {% endif %}
+        </div>
+
+        <button type="submit"
+            style="width: 20%; padding: 10px; background-color: #4CAF50; color: #fff; border: none; cursor: pointer;">Save Changes</button>
+    </form>
+</div>
+{% endblock %}

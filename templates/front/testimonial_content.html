@@ -1,0 +1,64 @@
+{% load static %}
+<section class="testimonial_section py-5">
+    <div class="container">
+        <div class="heading_container text-center mb-5" style="align-items: center;">
+            <h2>Testimonials</h2>
+        </div>
+
+        <div class="row justify-content-center">
+            {% for testimonial in testimonials %}
+            <div class="col-12 col-md-10 mb-4">
+                <div class="card p-3" style="background-color: lightblue;">
+                    <div class="testimonial d-flex align-items-center">
+                        <div class="img-box me-3" style="margin-right: 20px;">
+                            {% if testimonial.image %}
+                                <img src="{{ testimonial.image.url }}" alt="{{ testimonial.name }}" class="img-fluid round-circle " style="width: 160px; height: 120px;  padding: 10px;">
+                            {% else %}
+                                <img src="{% static 'images/default_testimonial.jpg' %}" alt="{{ testimonial.name }}" class="img-fluid" style="width: 180px; height: 120px; ">
+                            {% endif %}
+
+                        </div>
+                        <div class="client_detail flex-grow-1">
+                            <div class="client_info mb-2">
+                                <h6 class="mb-1">{{ testimonial.name }}</h6>
+                                <div class="stars mb-1 text-warning">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                </div>
+                                <small class="text-muted">{{ testimonial.date|date:"F j, Y" }}</small>
+                            </div>
+                            <i class="fa fa-quote-left fa-lg text-primary"></i>
+                        </div>
+                    </div>
+                    <div class="client_text mt-3">
+                        <p class="testimonial-content" style="width: 90%;">{{ testimonial.content }}</p>
+                        <a href="javascript:void(0);" class="read-more">Read More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const readMoreLinks = document.querySelectorAll('.read-more');
+        
+        readMoreLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                const content = this.previousElementSibling;
+                if (this.textContent === 'Read More') {
+                    content.style.display = 'block';
+                    this.textContent = 'Read Less';
+                } else {
+                    content.style.display = '-webkit-box';
+                    this.textContent = 'Read More';
+                }
+            });
+        });
+    });
+</script>

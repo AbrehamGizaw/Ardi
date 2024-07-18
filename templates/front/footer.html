@@ -1,0 +1,120 @@
+{% load static %}
+<section class="footer_section" style="margin-top: 20px;">
+  <div class="container" style="background-color: rgb(76, 188, 233);">
+    <div class="row">
+      <div class="col-12 col-md-3 mb-4">
+        <div class="footer_logo">
+          <a href="{% url 'index' %}">
+            <img src="{% static 'images/ardi_logo.jpg' %}" alt="The Marble Factory Logo" class="img-fluid footer-logo" style="width: 100%;">
+          </a>
+        </div>
+        <div class="social_icons mb-4 mt-3 d-flex justify-content-start align-items-center" style="background-color: rgb(231, 240, 243); width: 60%; height: 40px; border-radius: 5px;">
+          <a href="https://www.facebook.com/profile.php?id=100065344455323" style="padding: 10px; color: #3b5998; font-size: 24px; transition: transform 0.3s;">
+            <i class="fa fa-facebook" aria-hidden="true"></i>
+          </a>
+          <a href="" style="padding: 10px; color: #1da1f2; font-size: 24px; transition: transform 0.3s;">
+            <i class="fa fa-twitter" aria-hidden="true"></i>
+          </a>
+          <a href="https://www.youtube.com/@abrahamgizaw9390/videos" style="padding: 10px; color: #ff0000; font-size: 24px; transition: transform 0.3s;">
+            <i class="fa fa-youtube" aria-hidden="true"></i>
+          </a>
+          <a href="https://www.tiktok.com/" style="padding: 10px; color: #000000; font-size: 24px; transition: transform 0.3s;">
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+      <div class="col-6 col-md-3 mb-4">
+        <h4>Resources</h4>
+        <ul class="list-unstyled">
+          <li><a href="{% url 'terms_conditions' %}">Terms & Conditions</a></li>
+          <li><a href="{% url 'privacy' %}">Privacy</a></li>
+          <li><a href="{% url 'faq' %}">FAQ</a></li>
+          <li><a href="{% url 'warranty' %}">Warranty</a></li>
+          <li><a href="{% url 'care_maintenance' %}">Care & Maintenance</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md-3 mb-4">
+        <h4>Our Partners</h4>
+        <ul class="list-unstyled">
+          <li><a href="https://debolx.com/" target="_blank">DEBOL ENGINEERING PLC</a></li>
+          <li><a href="https://www.hubdigitaltelecom.com/" target="_blank">HUB DIGITAL TELECOM</a></li>
+          <li><a href="https://www.skycityhotel.com/" target="_blank">SKY CITY HOTEL</a></li>
+          <li><a href="https://www.ethiopianairlines.com/" target="_blank">ETHIOPIAN AIRLINES</a></li>
+          <li><a href="https://www.ethiotelecom.et/" target="_blank">ETHIO-TELECOM</a></li>
+        </ul>
+      </div>
+      <div class="col-12 col-md-3 mb-4 text-left">
+        <h4>Contact us!</h4>
+        <p><i class="fa fa-map-marker" aria-hidden="true"></i> Adama, Oromia, Behind Dallol hotel</p>
+        <p><i class="fa fa-phone" aria-hidden="true"></i> <a href="tel:+251911275176">+251911275176</a></p>
+        <p><i class="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:ardimarble2@gmail.com">ardimarble2@gmail.com</a></p>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-lg-6 text-lg-left text-center mb-2 mb-lg-0">
+        <p>&copy; <span id="displayDateYear"></span> Ardi Marble Factory - All rights reserved</p>
+      </div>
+      <div class="col-lg-6 text-lg-right text-center">
+        <p><a href="https://debolx.com">Powered by Debol Engineering Softwares</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% block extra_css %}
+<style>
+  .footer-logo {
+    width: 100%;
+    max-width: 150px;
+  }
+  @media (max-width: 768px) {
+    .footer-logo {
+      max-width: 100px;
+    }
+  }
+  @media (max-width: 576px) {
+    .footer-logo {
+      max-width: 80px;
+    }
+  }
+  .footer_section {
+    background-color: rgb(76, 188, 233);
+    padding: 40px 0;
+  }
+  .footer_section h4 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  .footer_section .social_icons a {
+    font-size: 18px;
+    color: inherit;
+    text-align: center;
+  }
+  .footer_section .social_icons a:hover {
+    transform: scale(1.2);
+  }
+  .footer_section ul {
+    padding: 0;
+    list-style: none;
+  }
+  .footer_section ul li {
+    margin-bottom: 10px;
+  }
+  .footer_section ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  .footer_section ul li a:hover {
+    color: #007bff;
+    text-decoration: underline;
+  }
+  .footer_section .text-left p {
+    text-align: left;
+  }
+</style>
+{% endblock %}
+
+<script>
+  document.getElementById('displayDateYear').textContent = new Date().getFullYear();
+</script>

@@ -1,0 +1,66 @@
+{% extends 'back/base.html' %}
+{% load static %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="{% url 'list_home' %}">Homes</a></li>
+{% endblock %}
+
+{% block content %}
+<div class="site-main">
+    <section class="ttm-row clearfix">
+        <div class="container">
+            <div class="row pt-60 res-991-pt-0">
+                <div class="col-lg-12">
+                    <div class="pr-40 res-991-pr-0 res-991-pb-30">
+                        <h4 class="h4-md">List of Homes</h4>
+
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Address</th>
+                                    <th>Description</th>
+                                    <th>Price</th>
+                                    <th>Images</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for home in homes %}
+                                <tr>
+                                    <td>{{ home.title }}</td>
+                                    <td>{{ home.address }}</td>
+                                    <td>{{ home.description }}</td>
+                                    <td>{{ home.price }}</td>
+                                    <td>
+                                        <ul>
+                                            {% for image in home.images.all %}
+                                            <li>
+                                                <img src="{{ image.image.url }}" alt="{{ image.image.name }}" style="max-width: 100px; height: auto;">
+                                                <form action="{% url 'delete_home_image' id=image.id %}" method="POST" style="display: inline;">
+                                                    {% csrf_token %}
+                                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                                </form>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'edit_home' id=home.id %}" class="btn btn-warning btn-sm">Edit</a>
+                                        <form action="{% url 'delete_home' id=home.id %}" method="POST" style="display: inline;">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
