@@ -1,0 +1,210 @@
+
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<section >
+
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+
+
+                <div class="col-lg-12 col-sm-12 border-right-blue-grey border-right-lighten-5 clearfix mb-1 mt-1">
+                    <div class="media">
+                        <div class="media-left pr-1">
+                            <img class="media-object" height="95" width="95" {% if user.profile %} src="{{user.profile.url}}" {% else %} src="{% static 'front/img/user.png' %}"  {% endif %} alt="Profile Image">
+                        </div>
+                        <div class="media-body pt-1 pb-0">
+                            <a href="{% url 'useracc:profile' id=user.id %}"><h4 class="card-title">{{user.full_name}}</h4></a>
+                            <p>{{user.email}}</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                   
+                    
+                    <div class="col-lg-12 col-sm-12">
+                        <div class="card" style="height: 378.1px;">
+                            <div class="card-header border-0">
+                                <h4 class="card-title">Staff Members ({{users.count}})</h4>
+                                <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="reload"><i class="feather icon-rotate-cw"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <div id="audience-list-scroll" class="table-responsive height-300 position-relative">
+                                    <table class="table mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Phone</th>
+                                                <th>Status</th>
+                                                <th>Registered Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for u in users %}
+                                            <tr>
+                                                <td> <a href=""> {{u.full_name}}</a></td>
+                                                <td>{{u.email}}</td>
+                                                <td>{{u.phone}}</td>
+                                                <td>{{u.status}}</td>
+                                                <td>{{u.created_date}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="row">
+                    <div class="col-lg-6 col-sm-12">
+                        <div class="card" style="height: 378.1px;">
+                            <div class="card-header border-0">
+                                <h4 class="card-title"> Research Outputs ({{research.count}})</h4>
+                                <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="reload"><i class="feather icon-rotate-cw"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <div id="audience-list-scroll" class="table-responsive height-300 position-relative">
+                                    <table class="table mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>Title</th>
+                                                <th>Author</th>
+                                                <th>Document</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for r in research %}
+                                            <tr>
+                                                <td> <a href="{% url 'staff:research_update' id=r.id %}"> {{r.title}}</a></td>
+                                                <td>{{r.author}}</td>
+                                                <td>{% if r.document %} <a href="{{r.document.url}}" download> Download</a>{% else %} No Doc {% endif %}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    
+                    <div class="col-lg-6 col-sm-12">
+                        <div class="card" style="height: 378.1px;">
+                            <div class="card-header border-0">
+                                <h4 class="card-title">Active Call Applications ({{call_application.count}})</h4>
+                                <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="reload"><i class="feather icon-rotate-cw"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <div id="audience-list-scroll" class="table-responsive height-300 position-relative">
+                                    <table class="table mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>Title</th>
+                                                <th>Assistant Name</th>
+                                                <th>Email</th>
+                                                <th>End Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for c in call_application %}
+                                            <tr>
+                                                <td> <a href="{% url 'staff:call_application_update' id=c.id %}"> {{c.title}}</a></td>
+                                                <td>{{c.assistant_name}}</td>
+                                                <td>{{c.email}}</td>
+                                                <td>{{c.end_date}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="row">
+                    <div class="col-lg-6 col-sm-12">
+                        <div class="card" style="height: 378.1px;">
+                            <div class="card-header border-0">
+                                <h4 class="card-title"> Upcoming Events ({{event.count}})</h4>
+                                <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="reload"><i class="feather icon-rotate-cw"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <div id="audience-list-scroll" class="table-responsive height-300 position-relative">
+                                    <table class="table mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>Title</th>
+                                                <th>Place</th>
+                                                <th>Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for e in event %}
+                                            <tr>
+                                                <td> <a href="{% url 'staff:events_update' id=e.id %}"> {{e.title}}</a></td>
+                                                <td>{{e.place}}</td>
+                                                <td>{{e.date}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+{% endblock %}

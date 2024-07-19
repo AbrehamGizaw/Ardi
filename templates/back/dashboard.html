@@ -1,0 +1,41 @@
+<!-- templates/staff/dashboard.html -->
+{% extends "back/base.html" %}
+
+{% block title %}Staff Dashboard{% endblock %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <h2>Staff Dashboard</h2>
+
+    <div class="card mb-3" style="background-color: #d0d1d3;">
+        <div class="card-body">
+            <h5 class="card-title"><a href="{% url 'list_product' %}">Products</a></h5>
+            <p class="card-text">Total products: {{ product_count }}</p>
+        </div>
+    </div>
+
+
+    <div class="card mb-3" style="background-color: #d0d1d3;">
+        <div class="card-body">
+            <h5 class="card-title"><a href="{% url 'list_gallery' %}">Gallery</a></h5>
+            <p class="card-text">Total images in Gallery: {{ gallery_count }}</p>
+            <p class="card-text">Distinct categories: {{ Distinct_categories }}</p>
+
+        </div>
+    </div>
+
+    <div class="card mb-3" style="background-color: #d0d1d3;">
+        <div class="card-body">
+            <h5 class="card-title"><a href="{% url 'list_testimonial' %}">Testimonial</a></h5>
+            <p class="card-text">Total message count: {{ testimonial_count }}</p>
+        </div>
+    </div>
+
+    <div class="card mb-3" style="background-color: #d0d1d3;">
+        <div class="card-body">
+            <h5 class="card-title"><a href="{% url 'list_contact' %}">Messages</a></h5>
+            <p class="card-text">Total Messages: {{ contact_count }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

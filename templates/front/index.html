@@ -1,0 +1,98 @@
+{% extends "front/base.html" %}
+{% load static %}
+ {% block content %}
+ <section class="slider_section py-5" style="margin-bottom: 60px; background-image: url({% static 'images/background.jpg' %}); background-size: cover; background-position: center; position: relative;">
+  <div class="container" style="position: relative; z-index: 1;">
+     <div class="row" style="margin-bottom: 30px;">
+       <div class="col-md-6">
+         <div class="detail-box" style="background-color: rgba(255, 255, 255, 0.8); padding: 20px; border-radius: 5px;">
+           <h3 style="color: blue;">
+             Ardi Marble factory <br>
+             with discount and <br>
+             free Delivery
+           </h3>
+           <p>
+             You can order now, we are always ready to make your house fancy. There are plenty of marble products with their types, call us and order now as you wish. If you order in large amounts, we have delivery service too.
+           </p>
+           <a href="" class="btn btn-primary">
+             Contact Us
+           </a>
+         </div>
+       </div>
+       <div class="col-md-6">
+         <div id="productCarousel" class="carousel slide" data-ride="carousel">
+           <div class="carousel-inner">
+             <div class="carousel-item active">
+               <img src="{% static 'images/default_product.jpg' %}" class="d-block w-100" alt="Product Image 1" style="height: 300px; object-fit: cover;">
+             </div>
+             <div class="carousel-item">
+               <img src="{% static 'images/product2.jpg' %}" class="d-block w-100" alt="Product Image 2" style="height: 300px; object-fit: cover;">
+             </div>
+             <div class="carousel-item">
+               <img src="{% static 'images/product3.jpg' %}" class="d-block w-100" alt="Product Image 3" style="height: 300px; object-fit: cover;">
+             </div>
+           </div>
+           <a class="carousel-control-prev" href="#productCarousel" role="button" data-slide="prev">
+             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+             <span class="sr-only">Previous</span>
+           </a>
+           <a class="carousel-control-next" href="#productCarousel" role="button" data-slide="next">
+             <span class="carousel-control-next-icon" aria-hidden="true"></span>
+             <span class="sr-only">Next</span>
+           </a>
+         </div>
+       </div>
+     </div>
+   </div>
+   <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 0;"></div>
+ </section>
+ 
+    <!-- end slider section -->
+
+  <!-- about section -->
+
+ {% include 'front/about_content.html' %}
+
+  <!-- end about section -->
+
+   <!-- client section -->
+
+   {% include 'front/testimonial_content.html' %}
+   <!-- end client section -->
+
+  <!-- professional section -->
+
+  <section class="professional_section layout_padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="img-box">
+            <img src="{% static 'images/default_product.jpg' %}" alt="">
+          </div>
+        </div>
+        <div class="col-md-6 ">
+          <div class="detail-box">
+            <h2>
+              We Provide Professional <br>
+              Home Services.
+            </h2>
+            <p>
+              randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All randomised words which don't look even slightly
+            </p>
+            <a href="">
+              Read More
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end professional section -->
+
+  <!-- service section -->
+
+ {% include 'front/service_content.html' %}
+  <!-- end service section -->
+
+{% endblock %}

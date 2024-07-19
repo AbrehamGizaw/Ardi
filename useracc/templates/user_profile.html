@@ -1,0 +1,43 @@
+<!-- profile.html -->
+{% extends 'back/base.html' %}
+
+{% block content %}
+<div style="margin: 0 auto; width: 50%; text-align: center;">
+    <h2>{{ user.username }}'s Profile</h2>
+    {% if user.profile %}
+    <img src="{{ user.profile.url }}" alt="Profile Picture" style="width: 150px; height: 150px; border-radius: 50%; margin-bottom: 20px;">
+    {% else %}
+    <h3> No Profile has been uploaded </h3>
+    {% endif %}
+    <table style="margin: 0 auto; width: 100%; text-align: left;">
+        <tr>
+            <th>UserName:</th>
+            <td>{{ user.username }}</td>
+        </tr>
+        <tr>
+            <th>First Name:</th>
+            <td>{{ user.firstname }}</td>
+        </tr>
+        <tr>
+            <th>Last Name:</th>
+            <td>{{ user.lastname }}</td>
+        </tr>
+        <tr>
+            <th>Gender:</th>
+            <td>{{ user.gender }}</td>
+        </tr>
+        <tr>
+            <th>Email:</th>
+            <td>{{ user.email }}</td>
+        </tr>
+        <tr>
+            <th>Phone:</th>
+            <td>{{ user.phone }}</td>
+        </tr>
+    </table>
+    
+    <p style="margin-top: 20px;">
+        <a href="{% url 'useracc:edit_profile' %}" style="color: #4CAF50; font-weight: bold;">Edit Profile</a>
+    </p>
+</div>
+{% endblock %}
