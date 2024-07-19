@@ -6,9 +6,9 @@
 {% block content %}
 <section class="product_detail_section py-5">
     <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <div id="carouselProductDetail" class="carousel slide" data-ride="carousel">
+        <div class="row" style="background-color: lightblue; padding: 20px;">
+            <div class="col-md-6" >
+                <div id="carouselProductDetail" class="carousel slide" data-ride="carousel" >
                     <div class="carousel-inner">
                         {% for image in product.images.all %}
                             <div class="carousel-item {% if forloop.first %}active{% endif %}" style="height: 400px;">

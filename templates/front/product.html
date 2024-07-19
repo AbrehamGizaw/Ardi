@@ -16,31 +16,31 @@
         <div class="heading_container text-center mb-5" style="align-items: center;">
             <h2>Our Product</h2>
         </div>
-        <ul class="nav nav-tabs justify-content-center" role="tablist">
+        <ul class="nav nav-tabs justify-content-center" role="tablist" style="background-color: lightblue; border-color: lightblue;">
             {% for category in categories %}
                 <li class="nav-item">
                     <a class="nav-link {% if forloop.first %}active{% endif %}" id="category-{{ category|slugify }}-tab" data-toggle="tab" href="#category-{{ category|slugify }}" role="tab" aria-controls="category-{{ category|slugify }}" aria-selected="true">{{ category }}</a>
                 </li>
             {% endfor %}
         </ul>
-        <div class="tab-content mt-4">
+        <div class="tab-content mt-4 justify-content-center" >
             {% for category, products in categorized_products.items %}
                 <div class="tab-pane fade {% if forloop.first %}show active{% endif %}" id="category-{{ category|slugify }}" role="tabpanel" aria-labelledby="category-{{ category|slugify }}-tab">
-                    <div class="row">
+                    <div class="row justify-content-center"  >
                         {% for product in products %}
                             <div class="col-lg-4 col-md-6 mb-4">
-                                <div class="card h-100" style="background-color: rgb(175, 202, 253);">
-                                    <a href="{% url 'product_detail' product.id %}">
+                                <div class="card h-100" style="background-color: lightblue; ">
+                                    <a href="{% url 'product_detail' product.id %}" >
                                         <img src="{{ product.images.first.image.url }}" alt="{{ product.title }}" class="card-img-top img-fluid" style="height: 200px; object-fit: cover;">
                                     </a>
                                     <div class="text-center">
                                         <h5 class="card-title" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ product.name }}</h5>
                                     </div>
                                     <div>
-                                        <p class="card-text"><strong>price :  {{ product.price }} ETB per square meter</strong></p>
+                                        <p class="card-text" style="padding-left: 5%;"><strong>price :  {{ product.price }} ETB per square meter</strong></p>
                                     </div>
                                     <div>
-                                        <p class="card-text">{{ product.description }}</p>
+                                        <p class="card-text" style="padding-left: 5%;">{{ product.description }}</p>
                                     </div>
                                 </div>
                             </div>

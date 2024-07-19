@@ -9,7 +9,7 @@
         <div class="heading_container text-center mb-5" style="align-items: center;">
             <h2>Our Gallery</h2>
         </div>
-        <ul class="nav nav-tabs justify-content-center" role="tablist">
+        <ul class="nav nav-tabs justify-content-center" role="tablist" style="background-color: lightblue; border-color: lightblue;">
             {% for category in categories %}
                 <li class="nav-item">
                     <a class="nav-link {% if forloop.first %}active{% endif %}" id="category-{{ category|slugify }}-tab" data-toggle="tab" href="#category-{{ category|slugify }}" role="tab" aria-controls="category-{{ category|slugify }}" aria-selected="true">
@@ -18,13 +18,13 @@
                 </li>
             {% endfor %}
         </ul>
-        <div class="tab-content mt-4 ">
+        <div class="tab-content mt-4 justify-content-center " >
             {% for category, galleries in categorized_galleries.items %}
                 <div class="tab-pane fade {% if forloop.first %}show active{% endif %}" id="category-{{ category|slugify }}" role="tabpanel" aria-labelledby="category-{{ category|slugify }}-tab">
-                    <div class="row">
+                    <div class="row justify-content-center">
                         {% for gallery in galleries %}
                             <div class="col-lg-4 col-md-6 mb-4">
-                                <div class="card h-100" style="background-color: rgb(175, 202, 253);">
+                                <div class="card h-100" style="background-color: lightblue; border-color: lightblue;">
                                     <a href="#" data-toggle="modal" data-target="#imageModal{{ gallery.id }}">
                                         <img src="{{ gallery.images.first.image.url }}" alt="{{ gallery.title }}" class="card-img-top img-fluid" style="height: 200px; object-fit: cover;">
                                     </a>

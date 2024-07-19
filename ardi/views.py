@@ -29,14 +29,19 @@ class WarrantyView(TemplateView):
 class CareAndMaintenanceView(TemplateView):
     template_name = 'front/care_and_maintenance.html'
 
-class Index(View):
-    def get(self, request):
-        testimonials = Testimonial.objects.all().order_by('-id')[:3]
-        return render(request, 'front/index.html', {'testimonials': testimonials } )
-
 class About(View):
     def get(self, request):
         return render(request, 'front/about.html')
+    
+class Index(View):
+    template_name = 'front/index.html'  # Remove the 'front/' prefix
+
+    def get(self, request):
+        testimonials = Testimonial.objects.all().order_by('-id')[:3]
+        print(f"Template path being searched: {self.template_name}")
+        return render(request, self.template_name, {'testimonials': testimonials})
+
+
 
 class Galleries(View):
     def get(self, request):

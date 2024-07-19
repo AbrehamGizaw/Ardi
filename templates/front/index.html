@@ -14,7 +14,7 @@
            <p>
              You can order now, we are always ready to make your house fancy. There are plenty of marble products with their types, call us and order now as you wish. If you order in large amounts, we have delivery service too.
            </p>
-           <a href="" class="btn btn-primary">
+           <a href="{% url 'add_contact' %}" class=" btn-primary" style="background-color: blue; border-color: blue;">
              Contact Us
            </a>
          </div>
@@ -62,31 +62,43 @@
 
   <!-- professional section -->
 
-  <section class="professional_section layout_padding">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="img-box">
-            <img src="{% static 'images/default_product.jpg' %}" alt="">
-          </div>
+  <section class="professional_section " style="background-color: lightblue; padding: 20px;">
+    <div class="container justify-content-center" >
+      <h2 class="text-center" style="text-align: center;">
+        Our Marble Products
+    </h2>
+    
+        <div class="row">
+            <div class="col-md-6">
+                <div class="img-box">
+                    <img src="{% static 'images/default_product.jpg' %}" alt="Marble Products">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="detail-box">
+                    <p>
+                        <b>Product Categories</b>
+                        <ul>
+                            <li><strong>Marble Slabs:</strong> High-quality marble slabs available in various sizes and finishes, suitable for countertops, flooring, and wall cladding.</li>
+                            <li><strong>Marble Tiles:</strong> Elegant marble tiles for both residential and commercial use, with options for different patterns and sizes.</li>
+                            <li><strong>Custom Marble Products:</strong> Tailored marble solutions including custom-cut pieces for specific projects, intricate designs, and bespoke requests.</li>
+                            <li><strong>Marble Accessories:</strong> Includes items such as marble sinks, vanity tops, and decorative marble pieces.</li>
+                        </ul>
+                        <b>Applications</b>
+                        <ul>
+                            <li><strong>Residential:</strong> Ideal for use in homes, including kitchens, bathrooms, and living areas.</li>
+                            <li><strong>Commercial:</strong> Suitable for high-traffic areas in hotels, offices, and public spaces.</li>
+                        </ul>
+                    </p>
+                    <a href="{% url 'products' %}" style="background-color: blue; border-color: blue;">
+                        Go To Products
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="col-md-6 ">
-          <div class="detail-box">
-            <h2>
-              We Provide Professional <br>
-              Home Services.
-            </h2>
-            <p>
-              randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All randomised words which don't look even slightly
-            </p>
-            <a href="">
-              Read More
-            </a>
-          </div>
-        </div>
-      </div>
     </div>
-  </section>
+</section>
+
 
   <!-- end professional section -->
 

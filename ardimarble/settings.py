@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-e0o*1xow1)a&2$8+j4ww0v$r((dp!&0z02_#1xhq%dpty0@y88'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ardi',
     'useracc',
+    
 ]
 
 MIDDLEWARE = [
@@ -60,7 +61,7 @@ MIDDLEWARE = [
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # or any other session backend you are using
 
 # Set the session to expire after 1 hour (3600 seconds)
-SESSION_COOKIE_AGE = 600  # 1 hour in seconds
+SESSION_COOKIE_AGE = 7200  # 1 hour in seconds
 
 # Ensure the session is saved every time it is modified
 SESSION_SAVE_EVERY_REQUEST = True
@@ -76,7 +77,7 @@ ROOT_URLCONF = 'ardimarble.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # Add this line
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -88,6 +89,8 @@ TEMPLATES = [
         },
     },
 ]
+
+
 
 
 WSGI_APPLICATION = 'ardimarble.wsgi.application'

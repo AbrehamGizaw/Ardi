@@ -84,8 +84,6 @@ class Register(LoginRequiredMixin,View):
 
             messages.success(request, 'Account created successfully. Check your email for the verification link.')
             return redirect('useracc:login')
-
-            
         return render(request, self.template_name, {'form': form})
     
 class EmailVerify(View):

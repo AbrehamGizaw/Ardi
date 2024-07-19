@@ -1,12 +1,12 @@
 {% load static %}
 <!-- header section starts -->
-<header class="header_section ">
+<header class="header_section">
     <div class="header_bottom" style="margin-bottom: 50px;">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg fixed-top custom_nav-container" style="background-color: rgb(76, 188, 233); height: 60px;">
                 <a class="navbar-brand" href="{% url 'index' %}">
-                    <a class="" href="/"><img class="brand-logo mt-1" style="margin-left: 40px;" width="40px" height="40px" alt="Logo"  src="{% static 'images/ardi_logo.jpg' %}">
-                    </a>
+                    <img class="brand-logo mt-1" style="margin-left: 40px;" width="40px" height="40px" alt="Logo" src="{% static 'images/ardi_logo.jpg' %}">
+                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class=""> </span>
                 </button>
@@ -30,19 +30,13 @@
                         <li class="nav-item {% if request.resolver_match.url_name == 'service' %}active{% endif %}">
                             <a class="nav-link" href="{% url 'service' %}">Services</a>
                         </li>
-                        <li class="nav-item {% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
+                        <li class="nav-item {% if request.resolver_match.url_name == 'add_contact' %}active{% endif %}">
                             <a class="nav-link" href="{% url 'add_contact' %}">Contact Us</a>
-                        </li> 
-                        <!-- <li class="nav-item {% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
-                            {% if user.is_authenticated %}
-                              <a class="nav-link" href="{% url 'dashboard' %}"> Dashboard</a>
-                            {% else %}
-                                <a href="{% url 'useracc:login' %}">
-                                    <i class="fa fa-sign-in" aria-hidden="true"></i>
-                                    <span>Signin</span>
-                                </a>
-                            {% endif %}
-                        </li>                        -->
+                        </li>
+                        <!-- Google Translate Dropdown -->
+                        <li class="nav-item">
+                            <div id="google_translate_element" style="display: inline-block; z-index: 1050;"></div>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -50,3 +44,54 @@
     </div>
 </header>
 <!-- end header section -->
+
+<!-- Google Translate Script -->
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            includedLanguages: 'en,am,om', // Add English here
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        }, 'google_translate_element');
+    }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<style>
+    .goog-te-gadget {
+        color: transparent;
+    }
+
+    .goog-te-gadget .goog-te-combo {
+        color: black !important;
+        background: none !important;
+        border: none !important;
+        font-size: 1rem;
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
+    }
+
+    .goog-te-gadget .goog-te-combo:hover {
+        color: #000;
+        background: none;
+    }
+
+    .goog-te-menu-frame.skiptranslate {
+        display: none !important;
+    }
+
+    .goog-te-banner-frame {
+        display: none !important;
+    }
+
+    .goog-te-gadget-simple {
+        border: none !important;
+        background: transparent !important;
+    }
+
+    .goog-te-gadget-simple:hover {
+        border: none !important;
+    }
+</style>
