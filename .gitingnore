@@ -23,3 +23,5 @@ static/
 # VS Code settings
 .vscode/
 
+# Virtual environment
+env/
